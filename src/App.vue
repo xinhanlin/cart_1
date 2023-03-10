@@ -5,6 +5,10 @@
 </template>
 <script></script>
 <style>
+html {
+  height: 100%;
+  width: 100%;
+}
 .backgroud-color {
   background-image: linear-gradient(to top, beige, #0084ff);
 }
