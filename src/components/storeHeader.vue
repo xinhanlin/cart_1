@@ -17,7 +17,7 @@
   height: 60px;
   line-height: 60px;
   background-color: black;
-  z-index: 1;
+  z-index: 99999;
 
   color: aliceblue;
 }
