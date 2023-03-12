@@ -30,7 +30,7 @@
             style="zoom: 150%"
             type="checkbox"
             @click="allSelect"
-            v-model="all"
+            v-model="allchecked"
             class="checkbox"
           />
           &nbsp;全&nbsp;選&nbsp;/全&nbsp;不&nbsp;選
@@ -53,7 +53,12 @@
 
             <div class="imgwrapper">
               <img class="img" :src="item.href" />
-              <button class="detail">詳情</button>
+
+              <router-link
+                :to="item.no < 20 ? `/cake/${item.id}` : `/drink/${item.id}`"
+                class="itemdetail"
+                >詳情</router-link
+              >
             </div>
             <div class="itemname">
               <span>{{ item.cartItem }}</span>
@@ -96,7 +101,7 @@
 </template>
 <script>
 import { useStore } from "vuex";
-import { reactive, toRefs } from "vue";
+import { computed } from "vue";
 import Header from "../../components/content.vue";
 import Content from "../../components/header.vue";
 import Bottom from "./bottom.vue";
@@ -110,22 +115,39 @@ export default {
   setup() {
     const store = useStore();
 
-    let data = reactive({
-      //全選/全不選勾選框的狀態
-      all: false,
+    const allchecked = computed({
+      get: () => {
+        return store.state.cart.every((item) => {
+          return item.checked == true;
+        });
+        // let a = true;
+        // store.state.cart.map(function (element) {
+        //   if (element.checked == false) {
+        //     a = false;
+        //   }
+        // });
+        // return a;
+      },
+      set: (value) => {
+        store.state.cart.forEach((element) => {
+          element.checked = value;
+        });
+      },
     });
-    //全選/全不選的勾選框
-    function allSelect() {
-      if (data.all == false) {
-        for (let i = 0; i < store.state.cart.length; i++) {
-          store.state.cart[i].checked = true;
-        }
-      } else {
-        for (let i = 0; i < store.state.cart.length; i++) {
-          store.state.cart[i].checked = false;
-        }
-      }
-    }
+
+    // 全選/全不選的勾選框
+    // function allSelect() {
+    //   if (allchecked == true) {
+    //     for (let i = 0; i < store.state.cart.length; i++) {
+    //       store.state.cart[i].checked = true;
+    //     }
+    //   } else {
+    //     for (let i = 0; i < store.state.cart.length; i++) {
+    //       store.state.cart[i].checked = false;
+    //     }
+    //   }
+    // }
+    //
 
     //監測當單一勾選框沒被選,全選變為沒被選
     // watch(,()=>{
@@ -153,8 +175,8 @@ export default {
     };
 
     return {
-      ...toRefs(data),
-      allSelect,
+      allchecked,
+      // allSelect,
 
       removepay,
       nopay,

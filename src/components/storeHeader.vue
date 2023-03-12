@@ -6,8 +6,13 @@
         <li><router-link to="/">主頁</router-link></li>
         <li><router-link to="/drink">飲料</router-link></li>
         <li><router-link to="/cake">甜品</router-link></li>
+
         <!-- <li><router-link to="/about">About</router-link></li> -->
-        <li><router-link to="/pay">訂購單</router-link></li>
+        <li>
+          <router-link to="/pay"
+            >訂購單({{ $store.state.cart.length }})</router-link
+          >
+        </li>
       </ul>
     </div>
   </div>

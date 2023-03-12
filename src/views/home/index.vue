@@ -3,13 +3,13 @@
   <imgHeaderContainer class="img-header-container"></imgHeaderContainer>
   <h1>堅持提供最好的茶飲,甜點</h1>
   <h1>堅守低糖,低熱量</h1>
-  <h1>高品質,低利潤回饋與長期支持的顧客</h1>
+  <h1 class="last">高品質,低利潤回饋與長期支持的顧客</h1>
   <!-- <div class="middle-container">
     <leftContainer class="left-container"></leftContainer>
     <rightContainer class="right-container"></rightContainer>
   </div> -->
 
-  <storeBottom></storeBottom>
+  <storeBottom class="store-bottom"></storeBottom>
 </template>
 <script>
 import imgHeaderContainer from "./imgHeaderContainer.vue";
@@ -70,7 +70,13 @@ h1 {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin-top: 20px;
+  color: blueviolet;
+}
+.last {
+  padding-bottom: 70px;
+}
+.store-bottom {
+  border-top: 2px solid yellowgreen;
 }
 </style>
