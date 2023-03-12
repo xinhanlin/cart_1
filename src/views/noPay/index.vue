@@ -91,6 +91,7 @@
       <Bottom></Bottom>
     </div>
   </div>
+  <storeBottom></storeBottom>
 </template>
 <script>
 import { useStore } from "vuex";
@@ -98,12 +99,14 @@ import { reactive, toRefs, computed, ref } from "vue";
 import Header from "../../components/content.vue";
 import Content from "../../components/header.vue";
 import Bottom from "./bottom.vue";
+import storeBottom from "../../components/storeBottom.vue";
 
 export default {
   components: {
     Header,
     Content,
     Bottom,
+    storeBottom,
   },
   setup() {
     const active = ref(2);

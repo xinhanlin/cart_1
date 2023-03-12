@@ -38,7 +38,6 @@ export default {
   left: 0;
 }
 .img-header-container {
-  width: 750px;
   display: block;
   padding: 120px 0px 40px;
   margin: 0 auto;

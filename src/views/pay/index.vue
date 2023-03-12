@@ -98,6 +98,7 @@
       <Bottom></Bottom>
     </div>
   </div>
+  <storeBottom></storeBottom>
 </template>
 <script>
 import { useStore } from "vuex";
@@ -105,12 +106,13 @@ import { computed } from "vue";
 import Header from "../../components/content.vue";
 import Content from "../../components/header.vue";
 import Bottom from "./bottom.vue";
-
+import storeBottom from "../../components/storeBottom.vue";
 export default {
   components: {
     Header,
     Content,
     Bottom,
+    storeBottom,
   },
   setup() {
     const store = useStore();
@@ -258,6 +260,9 @@ export default {
     color: black;
     cursor: pointer;
   }
+  .itemname {
+    margin-top: 20px;
+  }
 }
 
 .topwrapper .a {
@@ -295,7 +300,7 @@ export default {
   flex-grow: 2;
   overflow: hidden;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   min-width: 20px;
   flex-wrap: wrap;
 }
@@ -305,10 +310,23 @@ export default {
   margin-right: 3px;
 }
 .imgwrapper {
+  display: flex;
+  flex-direction: column;
   flex-grow: 3;
 }
+.imgwrapper .itemdetail {
+  width: 40px;
+  margin: 8px auto 0px;
+  border-radius: 10px;
+  background-color: gainsboro;
+  border: 1px solid gray;
+}
 .itemdetailwrapper img {
-  height: 80px;
+  display: block;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
 }
 .itemdetailwrapper .detail {
   display: block;
@@ -326,7 +344,7 @@ export default {
   flex-grow: 3;
   flex-wrap: wrap;
   line-height: 20px;
-  height: 80px;
+
   font-size: 20px;
 }
 

@@ -113,7 +113,6 @@ export default {
 .item-detail:hover {
   color: red;
 }
-
 .add-cart-delete {
   width: 88px;
   background-color: azure;

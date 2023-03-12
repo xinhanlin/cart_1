@@ -371,6 +371,7 @@ export default createStore({
       state.data.cake.map(function (item) {
         if (item.no == no) {
           item.checked = true;
+          item.num = 1;
           state.cart.push(item);
         }
       });
@@ -379,6 +380,7 @@ export default createStore({
       state.data.drink.map(function (item) {
         if (item.no == no) {
           item.checked = true;
+          item.num = 1;
           state.cart.push(item);
         }
       });
@@ -391,6 +393,7 @@ export default createStore({
       state.cart.map(function (item) {
         if (item.no == no) {
           // item.checked = false;
+
           state.nopay.push(item);
         }
       });
@@ -401,6 +404,7 @@ export default createStore({
       state.nopay.map(function (item) {
         if (item.no == no) {
           item.checked = true;
+          item.num = 1;
           state.cart.push(item);
         }
       });

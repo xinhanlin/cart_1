@@ -60,35 +60,27 @@
               <span>$&nbsp;{{ item.price * item.num }}</span>
             </div>
           </div>
-
-          <!--項目變更-->
-          <!-- <div class="changeitemwrapper">
-            <button @click="nopay(item.no)" class="upper">
-              <span>下次在購買</span>
-            </button>
-            <button @click="removepay(item.no)" class="button">
-              <span>刪除商品</span>
-            </button>
-          </div> -->
-          <!--結帳-->
         </div>
       </div>
       <Bottom></Bottom>
     </div>
   </div>
+  <storeBottom></storeBottom>
 </template>
 <script>
 import { useStore } from "vuex";
-import { reactive, toRefs, computed, onUpdated } from "vue";
+import { reactive, toRefs, computed } from "vue";
 // import Content from "../../components/content.vue";
 import Header from "../../components/header.vue";
 import Bottom from "./bottom.vue";
+import storeBottom from "../../components/storeBottom.vue";
 
 export default {
   components: {
     Header,
     // Content,
     Bottom,
+    storeBottom,
   },
   setup() {
     const store = useStore();
@@ -116,7 +108,6 @@ export default {
     // })
     //單一旅遊價格計算(計算式寫在template中)
 
-    //總旅遊總價格計算
     const all_price = computed(() => {
       let a = 0;
       for (let i = 0; i < store.state.cart.length; i++) {
@@ -126,20 +117,16 @@ export default {
       }
       return a;
     });
-    const removepay = (item) => {
-      store.commit("removepay", item);
-    };
+
     const nopay = (item) => {
       store.commit("nopay", item);
     };
 
-    //查看變動後的數字
-    onUpdated(() => {});
     return {
       ...toRefs(data),
       allSelect,
       all_price,
-      removepay,
+
       nopay,
     };
   },
